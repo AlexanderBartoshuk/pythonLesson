@@ -4,8 +4,8 @@ def homework(n):
     n = n//3
     if n == 3:
         return True
-    elif n > 3:
-        homework(n)
+    elif n // 3:
+        return(homework(n))
     else:
         return False
 
