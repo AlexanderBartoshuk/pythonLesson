@@ -1,17 +1,14 @@
 
-def Fibonachi(n):
-    if n <= 0:
-        input = int(input("Введите новое число:"))
-        Fibonachi(input)
+def homework(n):
+    if n == 3:
+        return "True"
     else:
-        if n == 1:
-            return 0
+        if n % 3 != 0:
+            return "False"
         else:
-            if n == 2:
-                return 1
-            else:
-                return Fibonachi(n-1) + Fibonachi(n-2)
-
+             return homework(n // 3)
 
 input = int(input("Введите число:"))
-print(Fibonachi(input))
+
+print(homework(input))
+
