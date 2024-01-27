@@ -15,3 +15,4 @@ def Fibonachi(n):
 
 input = int(input("Введите число:"))
 print(Fibonachi(input))
+print(Fibonachi(input))
