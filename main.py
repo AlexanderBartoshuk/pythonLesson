@@ -1,10 +1,9 @@
-#Implement a program that finds the sum of the digits of a given number
+def multiply(a,b): return a*b
 
-n = int(input("Введите число:"))
-list = []
-while n > 0 :
-    list.insert(0, n % 10)
-    n = n // 10
+def print_multiply(a,b,operation):
+    result = operation(a,b)
+    print(result)
 
-print(list)
-
+a = 5
+b = 4
+print_multiply(a,b,multiply)
