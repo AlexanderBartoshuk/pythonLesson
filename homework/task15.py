@@ -66,13 +66,14 @@ movies_dict = {
 def get_movie_info(movie_name):
     movie_info = movies_dict.get(movie_name)
     if movie_info is None:
-        print("Извините, но мы не нашли информацию о фильме '{}'".format(movie_name))
+        print(f"Извините, но мы не нашли информацию о фильме '{movie_name}'")
         print("Пожалуйста, введите название фильма заново.")
-        return None
+        return
     else:
-        print("Информация о фильме '{}':".format(movie_name))
+        print(f"Информация о фильме '{movie_name}':")
         for key, value in movie_info.items():
-            print("{}: {}".format(key, value))
+            print(f"{key}: {value}")
         return movie_info
 
 get_movie_info(input("Введите название фильма: "))
+
