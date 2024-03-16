@@ -4,10 +4,10 @@ class Orc:
         self.power = power
         self.intelect = intelect
         self.dexterity = dexterity
-        self.health = health
-        self.endurance = endurance
-        self.level = level
-        self.experience = experience
+        self.health = health # Задавать колличество xp не через параметры
+        self.endurance = endurance # задавать endurance не через параметры
+        self.level = level # Задавать lvl не через параметры
+        self.experience = experience  # задавать experience не через параметры
 
     def walk(self):
         print("Вперед")
@@ -21,14 +21,16 @@ class Orc:
     def right(self):
         print("Прямо")
 
+    # ошибка в логике, если у нас выносливости недостаточно для махания дубиной - нечего ей махать, выводи, что недостаточно выносливости
     def mahat_dubinloi(self):
         if self.endurance > 0:
             self.endurance -= 10
-            print(f"Махал дубинкой, {self.endurance}")
+            print(f"Махал дубинкой, {self.endurance}") # Махал дубиной, current endurance: self.endurance
         else:
             self.health -= 10
             print(f"Махал дубинкой, {self.health}")
 
+    # рекурсия
     def treated(self):
         if self.treated() < self.health:
             self.treated += 10
@@ -38,7 +40,7 @@ class Orc:
 
     def upgrade_level(self):
         self.level += 1
-        self.experience += 0
+        self.experience += 0 # зне имеет смысла
         print(f"Апгрейд уровня {self.level}")
 
     def die(self):
