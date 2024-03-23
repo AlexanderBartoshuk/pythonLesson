@@ -1,46 +1,36 @@
-class Orc:
+class Person():
 
-    def __init__(self,power,intelect,dexterity,health,endurance,level,experience):
-    def __init__(self,power,intelect,dexterity):
-        self.power = power
-        self.intelect = intelect
-        self.dexterity = dexterity
+    def __init__(self, name: str, health: int, intellect: int, power: int, dexterity: int, experience: int, lvl: int):
+        self.name = name
         self.health = health
-        self.endurance = endurance
-        self.level = level
+        self.intellect = intellect
+        self.power = power
+        self.dexterity = dexterity
         self.experience = experience
-        self.health = 54
-        self.endurance = 100
-        self.level = 1
-        self.experience = 0
-        self.use_weapon = "Машет дубинкой"
-
-    def walk(self):
-        print("Вперед")
-
-    def right(self):
-        print("Прямо")
-
-    def mahat_dubinloi(self):
-        if self.endurance > 0:
-    def use_weapon(self):
-        print("Машет дубинкой")
-    def mahat_dubinkoi(self):
-        if self.endurance >= 10:
-            self.endurance -= 10
-            print(f"Махал дубинкой, {self.endurance}")
-            print(f"Выносливость = {self.endurance}, Здоровье = {self.health}")
+        self.lvl = lvl
+    def go_direct(self):
+        print(self.name, "идет прямо 10 шагов")
+    def go_back(self):
+        print(self.name, "идет назад 10 шагов")
+    def go_right(self):
+        print(self.name, "идет вправо 10 шагов")
+    def go_left(self):
+        print(self.name, "идет влево 10 шагов")
+    def use_weapon(self, phrase: str):
+        if self.experience >= 10:
+            self.experience -= 10
+            print(f"{phrase}, {self.experience}")
+            print(f"Выносливость = {self.experience}, Здоровье = {self.health}")
         else:
             self.health -= 10
-            print(f"Махал дубинкой, {self.health}")
-            tmp = 10 - self.endurance
+            print(f"{phrase}, {self.health}")
+            tmp = 10 - self.experience
             self.health -= tmp
-            self.endurance = 0
+            self.experience = 0
             if self.health <= 0:
                 self.die()
             else:
-                print(f"Выносливость = {self.endurance}, Здоровье = {self.health}")
-
+                print(f"Выносливость = {self.experience}, Здоровье = {self.health}")
     def treated(self):
         if self.treated() < self.health:
             self.treated += 10
@@ -54,32 +44,24 @@ class Orc:
         else:
             self.health = 100
             print("Вы уже здоровы")
-
     def upgrade_level(self):
         self.level += 1
         self.experience += 0
         self.experience = 0
         print(f"Апгрейд уровня {self.level}")
-
     def die(self):
         print("Смерть")
 
-orc = Orc(15,5,5,34,3,0,42)
+class Orc(Person):
 
-class Elif(Orc):
+    def __init__(self, name: str):
+        super().__init__(name,100, 15, 65,20, 0, 1)
+    def za_ordu(self):
+        print("За Орду!")
+        self.die()
 
-    def init(self,power,intelect,dexterity,use_weapon):
-        super().__init__(power,intelect,dexterity)
-        self.use_weapon() == use_weapon
+    def use_weapon(self): super().use_weapon("Махать дубиной")
 
-    def use_weapon(self):
-        super().use_weapon()
-        print(f"Action = Стреять из лука")
 
-class Person(Orc):
 
-orc.mahat_dubinloi()
-    def __init__(self,power,intelect,dexterity):
-
-        super().__init__(power,intelect,dexterity)
 
