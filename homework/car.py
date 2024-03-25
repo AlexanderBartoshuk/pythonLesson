@@ -1,9 +1,8 @@
 class Car():
 
 
-    def __init__(self, power: int, wheel: int, color: str, weight: int, fuel: str, millage: int, power_reserve: int, mark : str):
+    def __init__(self, power: int, color: str, weight: int, fuel: str, millage: int, power_reserve: int, mark : str):
         self.power = power
-        self.wheel = wheel
         self.color = color
         self.weight = weight
         self.petrol = fuel
@@ -13,6 +12,7 @@ class Car():
         self.taxi = power // 3
         self.taxis = power // 2
         self.mark = mark
+
 
     def name(self):
         print(f"Марка авто - {self.mark}")
@@ -55,15 +55,23 @@ class Car():
                 print(f"Твой налог за год составляет {self.taxis}$")
 
 
+class SuperCar(Car):
+
+    def __init__(self, power: int,color: str, weight: int, fuel: str, millage: int, power_reserve: int, mark : str):
+        super().__init__(power,color,weight,fuel,millage,power_reserve,mark)
 
 
+class Lamborghini(SuperCar):
 
+    def __init__(self,mark="Lamborghini"):
+        super().__init__(500,"Yellow",2000,"petrol",463,43,mark)
 
+class Ferrari(SuperCar):
 
+    def __init__(self,mark="Ferrari"):
+        super().__init__(612,"Black",1233,"petrol",927,124,mark)
 
+class Bugatti(SuperCar):
 
-
-
-
-car = Car(250,4,"grey",3000,"бензин",1200,60,"Mersedes")
-
+    def __init__(self,mark="Bugatti"):
+        super().__init__(1500,"Red",4895,"petrol",5683,823,mark)
