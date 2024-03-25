@@ -1,16 +1,16 @@
 class Person():
 
-    def __init__(self,tamina : int, name: str, health: int,treat: int, intellect: int, power: int, dexterity: int, experience: int, level: int, max_health: int ):
+    def __init__(self, name: str, health: int, intellect: int, power: int, dexterity: int):
         self.name = name
         self.health = health
+        self.max_health = health
         self.intellect = intellect
         self.power = power
         self.dexterity = dexterity
-        self.tamina = experience
-        self.level = level
-        self.tamin = tamina
-        self.treat = treat
-        self.max_health = max_health
+        self.stamina = 100
+        self.level = 1
+        self.experience = 0
+
     def go_direct(self):
         print(self.name, "идет прямо 10 шагов")
     def go_back(self):
@@ -20,38 +20,33 @@ class Person():
     def go_left(self):
         print(self.name, "идет влево 10 шагов")
     def use_weapon(self, phrase: str):
-        if self.tamina >= 10:
-            self.tamina -= 10
-            print(f"{phrase}, {self.tamina}")
-            print(f"Выносливость = {self.tamina}, Здоровье = {self.health}")
+        if self.health <= 0:
+            self.die()
+            return
+
+        if min(self.stamina, 10) == 10:
+            self.stamina -= 10
+            print(f"{phrase}, {self.stamina}")
         else:
-            self.health -= 10
-            print(f"{phrase}, {self.health}")
-            tmp = 10 - self.tamina
-            self.health -= tmp
-            self.tamina = 0
-            if self.health <= 0:
-                self.die()
-            else:
-                print(f"Выносливость = {self.tamina}, Здоровье = {self.health}")
+            self.health -= (10 - self.stamina)
+            self.stamina = 0
+
+        print(f"{phrase}, stamina = {self.stamina}, health = {self.health}")
+
 
     def treated(self):
-        if self.treat < self.health:
-            self.treat = 10
 
         if self.health < self.max_health:
-            self.health += 10
-            print(f"Лечился на {self.treat},текущее здоровье - {self.health}")
-            if self.health >= self.max_health:
-                self.health = self.max_health
+            dif = self.max_health - self.health
+            hill = min(dif, 10)
+            self.health += hill
+            print(f"Лечился на {hill},текущее здоровье - {self.health}")
         else:
-            self.health = self.max_health
             print("Лечение не требуется, вы уже здоровы")
 
     def upgrade_level(self):
         self.level += 1
-        self.tamina += 0
-        self.tamina = 0
+        self.experience = 0
         print(f"Апгрейд уровня {self.level}")
     def die(self):
         print("Смерть")
@@ -63,7 +58,7 @@ class Orc(Person):
 
      def __init__(self, name: str):
 
-         super().__init__(100,name,15, 65,20, 0, 1,0,1,132)
+         super().__init__(name, 200,15,65,20 )
      def za_ordu(self):
          print("За Орду!")
          self.die()
@@ -74,7 +69,7 @@ class Human(Person):
 
      def __init__(self, name: str):
 
-         super().__init__(100, name,70, 14,16, 0, 1,0,1,100)
+         super().__init__(name,150,40, 30,30)
 
      def za_alians(self):
         print("За Альянс")
@@ -86,7 +81,7 @@ class Human(Person):
 class Elif(Person):
 
      def __init__(self, name: str):
-         super().__init__(90,name,150, 10, 10,30, 90, 100,1,100)
+         super().__init__(name, 100, 60, 15,25)
 
 
      def za_loreron(self):
@@ -98,7 +93,7 @@ class Elif(Person):
 orc = Orc("Вася")
 human = Human("Петя")
 elf = Elif("Нарамакил")
-per = Person(90,"Антон",100, 10, 10,30, 90, 100,1,100)
+
 for i in range(0,15):
     elf.use_weapon()
 
