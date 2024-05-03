@@ -29,3 +29,7 @@ class BoxPaper(Paper):
         super().__init__()
         Paper.paper_weight -= self.box_paper
 
+for i in range(0,10):
+    BoxPaper()
+
+print(Paper.paper_weight)
