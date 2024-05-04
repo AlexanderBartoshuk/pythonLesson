@@ -1,52 +1,76 @@
 class Tree():
 
-    tree_weight = 663.34
+    _tree_weight = 666
+
+    @staticmethod
+    def get_tree_weight():
+        return Tree._tree_weight
+
+    def set_tree_weight(weight):
+        try:
+            Tree._tree_weight = int(weight)
+        except:
+            print('Не валидное значение')
 
 
-class Paper(Tree):
-
-    paper_weight = 40
+class Paper():
+    _inctance = None
+    _paper_weight = 10
 
     def __new__(cls, *args, **kwargs):
-        if Tree.tree_weight >= cls.paper_weight:
-            return super().__new__(cls)
+        if Paper._inctance == None:
+            if Tree.get_tree_weight() >= cls._paper_weight:
+                Tree.set_tree_weight(Tree.get_tree_weight() - Paper._paper_weight)
+                Paper._inctance = super().__new__(cls)
+            else:
+                return None
         else:
-            return None
+            if Paper._paper_weight < BoxPaper._box_paper:
+                Paper._inctance = None
+                Paper._paper_weight = 10
+
+        return Paper._inctance
 
     def __init__(self):
-        Tree.tree_weight -= self.paper_weight
+        pass
+
+    @staticmethod
+    def get_paper_weight():
+        return Paper._paper_weight
+
+    def set_paper_weight(weight):
+        try:
+            Paper._paper_weight = int(weight)
+        except:
+            print("Не валидное значение")
+
 
 class BoxPaper(Paper):
 
-    box_paper = 5.93
+    _box_paper = 5.93
 
     def __new__(cls, *args, **kwargs):
-        if Paper.paper_weight >= cls.box_paper:
-            return super().__new__(cls)
-        elif Tree.tree_weight >= cls.box_paper:
-            return super().__init__(cls)
-        else:
-            return None
+        if Paper.get_paper_weight() >= cls._box_paper:
+            Paper.set_paper_weight(Paper.get_paper_weight() - BoxPaper._box_paper)
+
+        return super().__new__(cls)
+
+    @staticmethod
+    def get_paper_weight():
+        return BoxPaper._box_paper
+
+    def set_paper_weight(weight):
+        try:
+            BoxPaper._box_paper = int(weight)
+        except:
+            print("Не валидное значение")
+
 
     def __init__(self):
         super().__init__()
-        Paper.paper_weight -= self.box_paper
 
+for i in range(0,10):
+    box = BoxPaper()
 
-def checkng():
-    if Paper.paper_weight > BoxPaper.box_paper:
-        if Paper.paper_weight <= BoxPaper.box_paper:
-            pack_to_create = (Paper.paper_weight - BoxPaper.box_paper)
-            Paper.paper_weight += pack_to_create
-            Tree.tree_weight -= pack_to_create
-            print("Pack was created")
-        else:
-            print('Not enough Tree to create a pack')
-    else:
-        print("There is already enough paper for a pack.")
-
-
-for u in range(0,10):
-    checkng()
-
-checkng()
+    print(f"Tree = {Tree.get_tree_weight()}")
+    print(f"Paper = {Paper.get_paper_weight()}")
