@@ -2,6 +2,7 @@ class Tree():
 
     tree_weight = 663.34
 
+
 class Paper(Tree):
 
     paper_weight = 40
@@ -22,6 +23,8 @@ class BoxPaper(Paper):
     def __new__(cls, *args, **kwargs):
         if Paper.paper_weight >= cls.box_paper:
             return super().__new__(cls)
+        elif Tree.tree_weight >= cls.box_paper:
+            return super().__init__(cls)
         else:
             return None
 
@@ -29,7 +32,21 @@ class BoxPaper(Paper):
         super().__init__()
         Paper.paper_weight -= self.box_paper
 
-for i in range(0,10):
-    BoxPaper()
 
-print(Paper.paper_weight)
+def checkng():
+    if Paper.paper_weight > BoxPaper.box_paper:
+        if Paper.paper_weight <= BoxPaper.box_paper:
+            pack_to_create = (Paper.paper_weight - BoxPaper.box_paper)
+            Paper.paper_weight += pack_to_create
+            Tree.tree_weight -= pack_to_create
+            print("Pack was created")
+        else:
+            print('Not enough Tree to create a pack')
+    else:
+        print("There is already enough paper for a pack.")
+
+
+for u in range(0,10):
+    checkng()
+
+checkng()
