@@ -33,3 +33,5 @@ def quicksorted(array):
         return quicksorted(less) + [pivot] + quicksorted(greater)
     
 print(quicksorted([5,2,7,10,323]))
+
+
