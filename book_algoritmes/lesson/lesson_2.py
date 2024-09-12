@@ -27,6 +27,7 @@ print(great2("alesha"))
 print(buy("alex"))
 
 
+
 def factorial(x):
     if x== 1:
         return x 
