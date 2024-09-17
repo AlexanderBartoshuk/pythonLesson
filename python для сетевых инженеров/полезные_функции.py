@@ -10,7 +10,7 @@ print(*items, sep='|')
 
 import time
 
-for num in range(1):
+for num in range(0):
     print(num + 1, end=' ')
     time.sleep(1)
 
@@ -29,3 +29,53 @@ sorted(list_of_words, reverse=True)
 #Параметр key ожидает функцию, с помощью которой должно быть выполнено сравнение.
 
 sorted(list_of_words, key=len)
+
+
+# enumerate 
+
+list1 = ['str1', 'str2', 'str3']
+
+#for position, string in enumerate(list1, 100):
+#    print(position, string)
+
+list(enumerate(list1,100))
+
+
+#                       zip 
+
+a = [1,2,3,4]
+b = [100,200,300,400]
+c = [2,4,6,8]
+list(zip(a,b,c))
+
+
+
+d_keys = ['hostname', 'location', 'vendor', 'model', 'IOS', 'IP']
+d_values = ['london_r1', '21 New Globe Walk', 'Cisco', '4451', '15.4', '10.255.0.1']
+
+list(zip(d_keys,d_values))
+
+
+#               function all
+
+
+ip = '10.0.1.1'
+
+all(i.isdigit for i in ip.split('.'))
+
+#               function any 
+
+def ignore_command(command):
+    '''
+    Функция проверяет содержится ли в команде слово из списка ignore.
+    * command - строка. Команда, которую надо проверить
+    * Возвращает True, если в команде содержится слово из списка ignore, False - если нет
+    '''
+    ignore = ['duplex', 'alias', 'Current configuration']
+
+    for word in ignore:
+        if word in command:
+            return True
+    return False
+
+ignore_command("alias")
