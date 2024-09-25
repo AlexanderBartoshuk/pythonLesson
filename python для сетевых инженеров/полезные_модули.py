@@ -38,5 +38,3 @@ first_dict = [{'IP': '15.0.15.1',
 print(tabulate(first_dict,headers="keys", tablefmt='grid', stralign='center'))
 #print(tabulate(first_dict,headers="keys", tablefmt='html'))
 #print(tabulate(first_dict,headers="keys", tablefmt=''))
-
-
