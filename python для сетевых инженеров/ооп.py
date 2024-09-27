@@ -1,0 +1,14 @@
+from netmiko import ConnectHandler
+
+device = {
+    "device_type": "cisco_ios",
+    "host": "192.168.100.1",
+    "username": "cisco",
+    "password": "cisco",
+    "secret": "cisco",
+}
+
+ssh = ConnectHandler(**device)
+
+s = "string"
+s.upper()
