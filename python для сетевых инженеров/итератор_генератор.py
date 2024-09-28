@@ -23,3 +23,13 @@ f.__next__()
 with open("r1.txt") as f:
     for line in f:
         print(line.rstrip())
+
+
+
+# generation expression 
+
+genexpr  = (x**2 for x in range(10000))
+genexpr
+next(genexpr)
+next(genexpr)
+next(genexpr)
