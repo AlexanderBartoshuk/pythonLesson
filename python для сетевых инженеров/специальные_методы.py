@@ -1,6 +1,6 @@
 import time
 import paramiko
-
+import ipaddress
 
 class CiscoSSH:
     def __init__(self, ip, username, password, enable, disable_paging=True):
@@ -50,3 +50,46 @@ def modul(a,b):
 if __name__ == '__main__':
     print(modul(3,5))
 
+# method __str__ __repr__
+
+class Ipadress:
+
+    def __init__(self,ip) -> None:
+        self.ip = ip
+
+    def __str__(self) -> str:
+
+        return f"Ipadress - {self.ip}"
+    
+    def __repr__(self) -> str:
+        return f"Ipadress - {self.ip}"
+
+
+    def __add__(self,other):
+
+         
+        if not isinstance(other, int):
+                    raise TypeError(f"unsupported operand type(s) for +:"
+                                     f" 'IPAddress' and '{type(other).__name__}'")         
+        
+        ip_int = int(ipaddress.ip_address(self.ip))
+        sum_ip_str = str(ipaddress.ip_address(ip_int + other))
+        return Ipadress(sum_ip_str)
+
+
+ip1 = Ipadress('10.1.1.1')
+ip2 = Ipadress('10.2.2.2')
+
+print(ip1 + 5.0)
+
+
+#ip_adreses = [ip1, ip2]
+#print(ip_adreses)
+#print
+#print(repr(ip2))
+#str(ip1)
+#
+#ipaddress1 = ipaddress.ip_address('10.1.1.1')
+#int(ipaddress1)
+#
+#ipaddress.ip_address(167837953)
