@@ -22,36 +22,62 @@ class Switch:
 
 
 class Network:
-
-    def __init__(self,network) -> None:
+    def __init__(self, network):
         self.network = network
-        self.allocated = []
-        self.hosts = tuple(str(ip) for ip in ipaddress.ip_network(network).hosts())
+        subnet = ipaddress.ip_network(self.network)
+        self.addresses = [str(ip) for ip in subnet.hosts()]
+
+    def __iter__(self):
+        return iter(self.addresses)
+
+    
+
+# Протоколы
+# Протокол - это набор методов, которые должны быть реализованы в объекте,
+# чтобы он поддерживал определенное поведение.
+
+class Items:
+
+    def __init__(self,items) -> None:
+        self.items = items
+
+    def __getitem__(self,index):
+        print('Вызываю __getitem__')
+        return self.items[index]
+    
+
+    
+iterable = Items([1,3,4,2,6,5])
+iterable[2]
+
+for i in iterable:
+    print(">>>", i )
+
+list(map(str, iterable))
+
+def my_for(iterable):
+    if getattr(iterable, "__iter__", None):
+        print('Есть __iter__')
+        iterator = iter(iterable)
+        while True:
+            try:
+                print(next(iterator))
+            except StopIteration:
+                break
+    elif getattr(iterable, "__getitem__", None):
+        print('Нет __iter__, но есть __getitem__')
+        index = 0
+        while True:
+            try:
+                print(iterable[index])
+                index += 1
+            except IndexError:
+                break
+iterable = Items([1,3,4,2,6,5])
+my_for([1,2,3,4])
 
 
-    def allocate(self,ip):
-        if ip in self.hosts:
-            if ip not in self.allocated:
-                self.allocated.append(ip)
-            else:
-                raise ValueError(f"IP-adress {ip} уже находится в allocated")
-        else:
-            raise ValueError(f"IP-adress {ip} alredy isn't in {self.network}")
 
-
-
-net1 = Network("10.1.1.0/29")
-net1.allocate("10.1.1.1")
-net1.allocate("10.1.1.2")
-
-net1.allocated
-net1.allocate("10.1.1.100")
-
-
-
-
-
-
-#w1 = Switch('sw1','Cisco 3850')
-
-#sw1.generate_interface('Fa',10)
+net1 = Network('10.1.1.192/30')
+for ip in net1:
+    print(ip)
