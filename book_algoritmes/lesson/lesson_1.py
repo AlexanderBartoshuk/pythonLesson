@@ -12,6 +12,23 @@ def binary_search(list, item):
         else:
             low = mid + 1
     return None
+#my_list = [1, 3, 5, 7, 9]
+#print(binary_search(my_list, 3))
+#print(binary_search(my_list, -1))
 
-my_list = [1, 3, 5, 7, 9]
-print(binary_search(my_list, 3))
+
+
+def findSmaller(arr):
+    smaller = arr[0]
+    smaller_index = 0
+    for i in range(1, len(arr)):
+        if arr[i] < smaller:
+            smaller = arr[i]
+            smaller_index = i 
+        return smaller_index
+def SelectionSort(arr):
+    newArr = []
+    for i in range(len(arr)):
+        smaller = findSmaller(arr) # type: ignore
+        newArr.append(arr.pop(smaller))
+    return newArr

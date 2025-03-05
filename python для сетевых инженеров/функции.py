@@ -66,3 +66,5 @@ interfaces_info = [['Fa0/1', '10.0.1.1', '255.255.255.0'],
 
 for info in interfaces_info:
     print(config_interface(*info))
+
+

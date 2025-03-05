@@ -39,3 +39,6 @@ students.index = ['A',"B","C"]
 
 student = pd.read_csv("StudentsPerformance.csv")
 print(student)
+
+df = pd.read_csv('https://raw.githubusercontent.com/jorisvandenbossche/pandas-tutorial/master/data/titanic.csv')
+print(df)
