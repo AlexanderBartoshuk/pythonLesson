@@ -1,49 +1,45 @@
-# поиск в ширину 
-from collections import deque
+book = dict() # пустая хэш-таблица
+
+book["apple"] = 0,67
+book['авокадо'] = 0,35
+book['молоко'] = 0,35
+
+print(book)
+print(book["apple"])
+
+voter = {}
+def check_voter(name):
+    if voter.get(name):
+        print(f"Kick {name} out")
+    else:
+        voter[name] = True
+        print(f"let {name} to vote")
+check_voter('Mike')
+check_voter('Tom')
+check_voter('Tom')
+#кэширование
+catche = {}
+def get_page(url):
+    if catche.get(url):
+        return catche[url]
+    else:
+        data = get_data_from_server(url) # type: ignore
+        catche[url] = data
+        return data
+
+def main(list):
+    if list == []:
+        return 0
+    return list[0] + sum(list[1:])
+print(main([2,4,6]))
+
+def число(list):
+    a = sorted(list)
+    return a[-2]
+print(число([0,3,5,7,4,100]))
 
 
-graph = {}
-graph["you"] = ["alice","bob","claire"]
-graph["bob"] = ["anuji","peggy"]
-graph["alice"] = ["peggy"]
-graph["claire"] = ['thom',"jony"]
-graph["anuji"] = []
-graph["peggy"] = []
-graph["thom"] = []
-graph["jony"] = []
-
-"""
-search_queue = deque()
-search_queue += graph["you"]
-"""
-def person_is_seller(name):
-    return name[-1] == "m"
-"""
-def method(search_queue):
-    while search_queue:
-        person = search_queue.popleft()
-        if person_is_seller(person):
-            print(f"{person} является продавцом фруктов")
-            return True
-        else:
-            search_queue += graph[person]
-    return False
-"""
 
 
-def search(name):
-    search_queue = deque()
-    search_queue += graph[name]
-    searched = []
-    while search_queue:
-        person = search_queue.popleft()
-        if not person in searched:
-            if person_is_seller(person):
-                print(f"{person} is mango seller")
-                return True
-            else:
-                search_queue += graph[person]
-                searched.append(person)
-    return False
 
-search("you")
+
