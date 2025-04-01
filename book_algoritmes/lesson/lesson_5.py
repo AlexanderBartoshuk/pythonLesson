@@ -14,9 +14,9 @@ def check_voter(name):
     else:
         voter[name] = True
         print(f"let {name} to vote")
-check_voter('Mike')
-check_voter('Tom')
-check_voter('Tom')
+check_voter('Alexander')
+
+
 #кэширование
 catche = {}
 def get_page(url):

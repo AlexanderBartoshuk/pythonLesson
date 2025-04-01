@@ -12,13 +12,16 @@ graph["peggy"] = []
 graph["thom"] = []
 graph["jony"] = []
 
-"""
+
+
+
+
 search_queue = deque()
 search_queue += graph["you"]
-"""
+
 def person_is_seller(name):
     return name[-1] == "m"
-"""
+
 def method(search_queue):
     while search_queue:
         person = search_queue.popleft()
@@ -28,8 +31,6 @@ def method(search_queue):
         else:
             search_queue += graph[person]
     return False
-"""
-
 
 def search(name):
     search_queue = deque()
@@ -46,4 +47,3 @@ def search(name):
                 searched.append(person)
     return False
 
-search("you")

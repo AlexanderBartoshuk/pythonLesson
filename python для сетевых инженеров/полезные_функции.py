@@ -1,5 +1,5 @@
 # function set 
-# Параметр sep контролирует то, какой разделитель будет использоваться между элементами.
+# Параметр set контролирует то, какой разделитель будет использоваться между элементами.
 
 print(1,2,3, sep='|')
 print(1,2,3, sep='\n')
@@ -20,7 +20,7 @@ sorted(list_of_words)
 
 # reverse
 # Флаг reverse позволяет управлять порядком сортировки.
-# По умолчанию сортировка будет по возрастанию элементов.
+# По тумолчанию сортировка будет по возрастанию элеменов.
 
 sorted(list_of_words, reverse=True)
 
@@ -73,12 +73,7 @@ def ignore_command(command):
     '''
     ignore = ['duplex', 'alias', 'Current configuration']
 
-    for word in ignore:
-        if word in command:
-            return True
-    return False
-
-ignore_command("alias")
+    return(any([word in command for word in ignore]))
 
 #                лямда-функция 
 
