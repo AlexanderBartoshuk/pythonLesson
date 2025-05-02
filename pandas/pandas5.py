@@ -21,4 +21,3 @@ tit.groupby('Sex').mean(numeric_only=True)
 tit['Pclass'].value_counts()
 
 tit.groupby('Pclass')['Pclass'].count()
-    
