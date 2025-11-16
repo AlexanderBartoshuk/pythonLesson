@@ -134,3 +134,23 @@ for i in range(1,1000):
         if r > 999:
             print(r)
             break
+
+
+def f(n):
+    s = ''
+    while n > 0:
+        s = str(n%3) + s
+        n //= 3
+    return s
+c = []
+for n in range(1000):
+    s = f(n)
+    summa = s.count('1') + s.count('2')*2
+    if summa % 3 == 0:
+        s = '112'+ s[2:]
+    else:
+        s = s + f(summa)
+    r = int(s,3)
+    if r <= 679 and r%2 == 0:
+        c.append(r)
+print(max(c))

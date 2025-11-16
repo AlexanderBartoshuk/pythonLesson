@@ -68,3 +68,14 @@ print("====")
 for x in range(1, 361):
     if f1(x, 1) == 1:
         print(x)  # Исключим эти значения из списка выше
+
+
+# method from book 
+def f(s, m): # s-количество камней, m-осталось ходов до конца игры
+ if s <= 19: return m % 2 == 0 # условие победы
+ if m == 0: return 0
+ h = [f(s - 2, m - 1), f(s - 5, m - 1), f(s // 3, m - 1)] # ходы
+ return any(h) if m % 2 != 0 else all(h)
+print('19)', min([s for s in range(20, 100) if f(s, 2)]))
+print('20)', *[s for s in range(20, 100) if f(s, 3) and (not f(s, 1))])
+print('21)', min([s for s in range(20, 100) if f(s, 4) and (not f(s, 2))]))

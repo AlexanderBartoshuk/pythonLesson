@@ -16,5 +16,4 @@ def Lose(n, m):
 
 
 print('20)', *[m for m in range(537, 100000) if not Win(1, m) and Win(3, m)][:2])
-
 print('21)', min(m for m in range(538, 100000) if not Lose(2, m) and Lose(4, m)))

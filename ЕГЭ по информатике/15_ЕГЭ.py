@@ -30,6 +30,17 @@ print(A)
 
 
 
+def f(x,y):
+    return ((3*x) + (5*y) <a) or (x >= y) or (y > 8)
+
+for a in range(0,100):
+    if all(f(x,y) == 1 for x in range(0,100) for y in range(0,100)):
+        print(a)
+
+
+
+
+
 
 
 

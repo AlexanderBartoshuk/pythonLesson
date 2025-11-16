@@ -131,20 +131,76 @@
 #        print(i)
 #        break
 #
+#def b(s,m):
+#    if s >= 29: return m%2 == 0
+#    if m == 0: return 0     
+#    h = [b(s+1,m-1), b(s*2,m-1)]
+#    return any(h) if m%2 == 0 else all(h)
+#
+#print(min(s for s in range(1,100) if b(s,2)))
+#
+#def f(x,p):
+#    if x >= 364 and p == 3: return True
+#    if x < 364 and p ==3: return False
+#    if x >= 364: return False
+#
+#    if p%2 == 0: return f(x+1,p+1) or f(x*6, p+1)
+#    else: return f(x+1,p+1) or f(x*6, p+1)
+#
+#for i in range(1,361):
+#    if f(i,1):
+#        print(i)
+#        break
+#
+
+#def f(s,m):
+#    if s <= 19: return m %2 == 0
+#    if m == 0: return 0 
+#    h = [f(s-2,m-1),f(s-5,m-1),f(s//3, m-1)]
+#    return any(h) if m % 2 != 0 else all(h)
+#
+#print('19)', min([s for s in range(20, 100) if f(s, 2)]))
+#print('20)', *[s for s in range(20, 100) if f(s, 3) and (not f(s, 1))])
+#print('21)', min([s for s in range(20, 100) if f(s, 4) and (not f(s, 2))]))
+
+def f(x,y):
+    if x >= 64: return y%2 == 0
+    if y == 0: return 0 
+
+    h = [f(x+1,y-1),f(x*3,y-1)]
+    return any(h) if y%2 != 0 else all(h)
+
+print(min(s for s in range(1,63) if f(s,2)))
+print(*[s for s in range(1, 63) if f(s, 3) and (not f(s, 1))])
+print(*[s for s in range(1, 63) if f(s, 4) and (not f(s, 2))])
 
 
-def f(x,p):
-    if x >= 364 and p == 3: return True
-    if x < 364 and p ==3: return False
-    if x >= 364: return False
+def f(s,m):
+    if s >= 63: return m % 2 == 0
+    if m == 0: return 0 
+    h = [f(s+1,m-1),f(s+4,m-1),f(s*5,m-1)]
+    return any(h) if m % 2 != 0 else all(h)
+print('19)', min([s for s in range(1, 62) if f(s, 2)]))
+print('20)', *[s for s in range(1, 62) if f(s, 3) and (not f(s, 1))])
+print('21)', min([s for s in range(1, 62) if f(s, 4) and (not f(s, 2))]))
 
-    if p%2 == 0: return f(x+1,p+1) or f(x*6, p+1)
-    else: return f(x+1,p+1) or f(x*6, p+1)
 
-for i in range(1,361):
-    if f(i,1):
-        print(i)
+
+
+def f(x, h):
+    if h == 3 and x >= 63: 
+        return 1
+    elif h == 3 and x < 63:
+        return 0
+    elif x >= 63 and h < 3:
+        return 0
+    else:
+        if h % 2 == 0:
+            return f(x + 1, h + 1) or f(x + 4, h + 1) or f(x * 5, h + 1)   # стратегия победителя
+        else:
+             return f(x + 1, h + 1) or f(x + 4, h + 1) or f(x * 5, h + 1)   # стратегия проигравшего(неудачный ход)
+
+for x in range(1, 63):
+    if f(x, 1) == 1:
+        print("Задача 19: ", x)
         break
-
-
-

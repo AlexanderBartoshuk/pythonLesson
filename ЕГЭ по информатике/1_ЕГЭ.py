@@ -34,10 +34,28 @@ from itertools import *
 #        break
 
 
-table1 = '256 15 4 356 1246 145'.split()
-graph = 'аб ав бв бг вг вд гд де'.split()
-print('1 2 3 4 5 6')
-for p in permutations('абвгде'):
-    if all(str(p.index(c2) + 1) in table1[p.index(c1)] for c1,c2 in graph):
+
+
+
+
+
+from itertools import *
+
+a = 'аб бв вг аж ад дж де жи ик гк ге ек'.split()
+b = '256 159 468 367 127 134 45 39 28'.split()
+print('1 2 3 4 5 6 7 8 9')
+for p in permutations('абвгдежик'):
+    if all(str(p.index(c2)+1 ) in b[p.index(c1)] for c1,c2 in a):
         print(*p)
-        break
+        
+def f(x,y,z,w):
+    return ((x and y) or (y and z)) == ((x <= w) and (w <= z))
+for a,b in product([0,1],repeat=2):
+    table = ((0,1,1,1,1),
+             (0,1,0,a,1),
+             (0,1,0,b,1))
+    if len(table) == len(set(table)):
+        for p in permutations('xyzw',r=4):
+            if all(f(**dict(zip(p,line))) == line[-1] for line in table):
+                print(*p)
+                break

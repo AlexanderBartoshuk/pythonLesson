@@ -97,22 +97,24 @@
 #        mn = i
 #print(m,mn)
 #
-
-for x in range(2422000,2422080):
-    k = 0
-    for j in range(2,int(x**0.5) +1):
-        if not x%j:
-            break
-    else:
-        k +=1 
-        print(k,x)
-
-
-for n in range(1,100):
-    s = bin(n)[2::]
-    s = s + str(s.count('1') % 2)
-    s  = s +str(s.count('1') % 2)
-    r = int(s,2)
-    if r > 123:
-        print(r)
-        break
+#
+#for x in range(2422000,2422080):
+#    k = 0
+#    for j in range(2,int(x**0.5) +1):
+#        if not x%j:
+#            break
+#    else:
+#        k +=1 
+#        print(k,x)
+#
+#
+#for n in range(1,100):
+#    s = bin(n)[2::]
+#    s = s + str(s.count('1') % 2)
+#    s  = s +str(s.count('1') % 2)
+#    r = int(s,2)
+#    if r > 123:
+#        print(r)
+#        break
+#
+print(192*200)
