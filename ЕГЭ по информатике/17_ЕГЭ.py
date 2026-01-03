@@ -277,7 +277,7 @@ for i in range(len(a)-2):
             s3.append(abs(sum(troika)))
 print(len(s3),max(s3))
 
-print('privet mir')
+
 
 
 
