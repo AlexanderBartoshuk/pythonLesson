@@ -68,4 +68,12 @@
 #for n in range(1,2025): f(n)
 #
 #print((f(2024)//4 + f(2023))//f(2022))
+from itertools import *
 
+
+
+a = '37 57 147 37 26 57 12346'.split()
+b = 'ac cd ag gd db bf ad de ef'.split()
+for p in permutations('abcdefg'):
+    if all(str(p.index(c2)+1 in a[p.index(c1)]) for c1,c2 in b):
+        print
